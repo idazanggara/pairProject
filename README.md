@@ -1,5 +1,3 @@
-# pairProject
-Pair Project Phase 1
+REFERENCES 
 
-
-Update First
+for: NODEMAILER
