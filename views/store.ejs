@@ -21,6 +21,7 @@
                     <div class="container mb-3">
                         <input name="ItemId" type="number" value="<%= data[i].id %>" hidden/>
                         <label for="amount">Amount :</label>
+                        <input name="amountNow" type="number" value="<%= data[i].stock %>" hidden/>
                         <input name="amount" type="number" min="1" max="<%= data[i].stock %>" step="1" />
                     </div>
                     <button type="submit" class="btn btn-primary" <%= data[i].stock === 0 ? 'disabled' : '' %>>Add to Cart</button>
