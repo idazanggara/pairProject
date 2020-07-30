@@ -11,13 +11,42 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.belongsToMany(models.Item, {through: 'Carts'})
     }
   };
   User.init({
-    username: DataTypes.STRING,
-    password: DataTypes.STRING,
-    email: DataTypes.STRING,
-    role: DataTypes.STRING
+    username: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty:{
+          msg : 'Username cannot be empty'
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty:{
+          msg : 'Password cannot be empty'
+        }
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail:{
+          msg : 'Wrong email format'
+        }
+      }
+    },
+    role: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail:{
+          msg : 'Username cannot be empty'
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'User',
