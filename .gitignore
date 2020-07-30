@@ -115,5 +115,4 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-views/login.ejs
-views/register.ejs
+
