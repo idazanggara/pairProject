@@ -32,7 +32,7 @@ module.exports = {
         {
           name: 'Tepung Beras',
           stock: 30,
-          price: 4000,
+          price: 7000,
           path: '/img/tepungberas.png',
           createdAt: new Date(),
           updatedAt: new Date()
@@ -56,7 +56,7 @@ module.exports = {
         {
           name: 'Masako',
           stock: 100,
-          price: 9000,
+          price: 900,
           path: '/img/masako.png',
           createdAt: new Date(),
           updatedAt: new Date()
@@ -64,7 +64,7 @@ module.exports = {
         {
           name: 'Beras Maknyus',
           stock: 75,
-          price: 14000,
+          price: 27000,
           path: '/img/berasmaknyus.png',
           createdAt: new Date(),
           updatedAt: new Date()
