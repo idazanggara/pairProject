@@ -9,5 +9,4 @@ routes.get('/login', UserController.login)
 routes.post('/login', UserController.postLogin)
 routes.get('/logOut', UserController.logOut)
 
-
 module.exports = routes

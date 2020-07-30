@@ -1,7 +1,5 @@
 // sequelize model:generate --name User --attributes username:string,password:string,email:string,role:string
-
 // sequelize model:generate --name Item --attributes name:string,price:integer,stock:integer,path:string
-
 // sequelize model:generate --name Cart --attributes UserId:integer,ItemId:integer,amount:integer
 
 
