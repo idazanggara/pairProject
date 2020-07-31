@@ -1,5 +1,6 @@
 const { User, Item, Cart } = require('../models/index.js')
 const formatMoney = require('../helpers/formatMoney.js')
+const nodemailer = require('nodemailer')
 
 class CartController {
 
@@ -63,9 +64,13 @@ class CartController {
                 return User.findByPk(req.session.userId)
               })
               .then(data => {
-                // CartController.sendEmail(data.email, dataObj, totalCart)
+                //console.log(totalCart)
+                CartController.sendEmail(data.email, data.username)
                 const msg = `Belanja berhasil. Silahkan ditunggu untuk dikirimkan dan Silahkan Cek Email Anda`
                 res.redirect(`/store?msg=${msg}&type=success`)
+              })
+              .catch((err)=>{
+                res.send(err)
               })
           } else {
             const msg = `${excItem.join(', ')} melebihi stock yang ada`
@@ -90,6 +95,46 @@ class CartController {
       .catch(err => {
         res.send(err)
       })
+  }
+  static sendEmail(email, name){
+    //step 1
+    //call transporter and authenticator
+    let transporter = nodemailer.createTransport({
+      service:'gmail',
+      auth: {
+          user: '',
+          pass: ''
+          //silahkan diisi, ini bisa diisi langung, bisa juga diisi dengan dotenv:
+          //kalo gamau langsung coba liat dokumentasi dotenv
+          //call with process.env.
+          //.env di ignore
+          //di dalem .env isi :
+          //PASSWORD:
+          //EMAIL:
+          //referensi: https://www.youtube.com/watch?v=Va9UKGs1bwI&t
+      }
+  })
+    //step 2 define delivery path
+    let mailOptions = {
+      from: '',
+      //jangan lupa diisi from-nya
+      to: `${email}`,
+      subject: 'Terima Kasih!',
+      text: `Halo ToSeMol's family! Terimakasih ya ${name} telah berbelanja di website kami. Pesanan anda akan kami proses dan kirim segera!`
+    }
+      //IMPORTANT!
+    //Before sending, check you email provider regarding the authority for nodemailer use
+    //for an example, you must turn on this feature if you use gmail: https://myaccount.google.com/lesssecureapps
+
+    //Step 3 (Time to send it!)
+
+    transporter.sendMail(mailOptions, (err, data)=>{
+      if (err){
+          console.log(err)
+      } else {
+          console.log('hooray! email is sent!')
+      }
+    })
   }
 }
 
