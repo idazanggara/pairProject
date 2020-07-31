@@ -102,8 +102,8 @@ class CartController {
     let transporter = nodemailer.createTransport({
       service:'gmail',
       auth: {
-          user: '',
-          pass: ''
+          user: 'pancakebantet@gmail.com',
+          pass: 'coba@7890'
           //silahkan diisi, ini bisa diisi langung, bisa juga diisi dengan dotenv:
           //kalo gamau langsung coba liat dokumentasi dotenv
           //call with process.env.
@@ -112,6 +112,9 @@ class CartController {
           //PASSWORD:
           //EMAIL:
           //referensi: https://www.youtube.com/watch?v=Va9UKGs1bwI&t
+
+          // pancakebantet@gmail.com
+          // coba@7890
       }
   })
     //step 2 define delivery path
